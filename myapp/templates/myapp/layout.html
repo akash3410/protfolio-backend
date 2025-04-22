@@ -48,18 +48,16 @@
 
   <footer id="footer" class="footer position-relative light-background">
     <div class="container">
-      <h3 class="sitename">Brandon Johnson</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
+      <h3 class="sitename">{{ personal_info.name }}</h3>
+      <p>{{personal_info.bio }}</p>
       <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
+        {% for social in socials %}
+          <a href="{{ social.link }}"><i class="{{ social.logo }} fs-3"></i></a>
+        {% endfor %}
       </div>
       <div class="container">
         <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Alex Smith</strong> <span>All Rights Reserved</span>
+          <span>Copyright</span> <strong class="px-1 sitename">{{ personal_info.name }}</strong> <span>All Rights Reserved</span>
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
@@ -89,7 +87,7 @@
   <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
 
   <!-- Typed CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
   <script>
     var options = {
       strings: ["Designer", "Developer", "Freelancer", "Photographer"], // List of words to type
@@ -100,7 +98,7 @@
     };
   
     var typed = new Typed(".typed", options);
-  </script>
+  </script> -->
 
   <!-- AOS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

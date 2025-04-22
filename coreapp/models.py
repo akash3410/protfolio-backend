@@ -31,3 +31,44 @@ class PersonalInfo(models.Model):
     class Meta:
         verbose_name = "Personal Info"
         verbose_name_plural = "Personal Info"
+
+class About(models.Model):
+    title = models.CharField(max_length=150)
+    description = models.TextField(max_length=250)
+    profile_summary = models.TextField(max_length=250)
+    profile_summary2 = models.TextField(max_length=500, null=True, blank=True)
+    photo = models.ImageField(upload_to='profile/')
+
+    def save(self, *args, **kwargs):
+        if not self.pk and About.objects.exists():
+            raise Exception('There can only be one instance!')
+        else:
+            return super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return "About"
+    
+    class Meta:
+        verbose_name = "About"
+        verbose_name_plural = "About"
+
+class Social(models.Model):
+    name = models.CharField(max_length=50)
+    logo = models.CharField(max_length=100)
+    link = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+    
+class Skill(models.Model):
+    title = models.CharField(max_length=50)
+    progress = models.IntegerField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
