@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     'myapp',
     'coreapp',
+    'resumeapp',
 ]
 
 MIDDLEWARE = [
@@ -69,6 +70,7 @@ TEMPLATES = [
                 'coreapp.context_processors.global_about',
                 'coreapp.context_processors.globalSocial',
                 'coreapp.context_processors.globalSkill',
+                'resumeapp.context_processors.globalEducation',
             ],
         },
     },
