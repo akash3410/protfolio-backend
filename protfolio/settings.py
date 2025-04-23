@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'myapp',
     'coreapp',
     'resumeapp',
+    'serviceapp',
 ]
 
 MIDDLEWARE = [
@@ -73,6 +74,7 @@ TEMPLATES = [
                 'resumeapp.context_processors.globalEducation',
                 'resumeapp.context_processors.globalProfessional',
                 'resumeapp.context_processors.globalCertification',
+                'serviceapp.context_processors.globalService',
             ],
         },
     },
