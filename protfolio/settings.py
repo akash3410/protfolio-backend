@@ -71,6 +71,8 @@ TEMPLATES = [
                 'coreapp.context_processors.globalSocial',
                 'coreapp.context_processors.globalSkill',
                 'resumeapp.context_processors.globalEducation',
+                'resumeapp.context_processors.globalProfessional',
+                'resumeapp.context_processors.globalCertification',
             ],
         },
     },
