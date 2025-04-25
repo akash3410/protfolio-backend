@@ -1,0 +1,102 @@
+{% extends 'myapp/layout.html' %}
+
+{% block title %} Settings {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="form-custom-gradient p-4 border rounded w-75 w-sm-75 mx-auto my-1 p-auto">
+
+    <img src="{% static 'img/logowhite.png' %}" alt="logo" width="15%" height="15%" class="mb-3 mx-auto d-block">
+    <h3 class="mb-3 text-secondary">Update Informations</h3>
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" id="messsage">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+        
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                    <div>
+                        {% if user.clientinfo.profile_photo %}
+                            <img src="{{ user.clientinfo.profile_photo.url }}" alt="Profile Picture" width="50%" height="50%">
+                        {% else %}
+                            <p>No profile picture uploaded.</p>
+                        {% endif %}
+                    </div>
+
+                    {{ form.profile_photo.label_tag }}
+                    {{ form.profile_photo }}
+                </div>
+                <div class="mb-3">
+                    <div>
+                        {% if user.clientinfo.cover_photo %}
+                            <img src="{{ user.clientinfo.cover_photo.url }}" alt="Cover Photo" width="50%" height="50%">
+                        {% else %}
+                            <p>No cover uploaded.</p>
+                        {% endif %}
+                    </div>
+
+                    {{ form.cover_photo.label_tag }}
+                    {{ form.cover_photo }}
+                </div>
+            </div>
+
+            <div class="col-8">
+                <div class="mb-3">
+                    {{ form.full_name.label_tag }}
+                    {{ form.full_name }}
+                </div>
+                <div class="mb-3">
+                    {{ form.bio.label_tag }}
+                    {{ form.bio }}
+                </div>
+                <div class="mb-3">
+                    {{ form.company.label_tag }}
+                    {{ form.company }}
+                </div>
+                <div class="mb-3">
+                    {{ form.designation.label_tag }}
+                    {{ form.designation }}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone.label_tag }}
+                    {{ form.phone }}
+                </div>
+                <div class="mb-3">
+                    {{ form.address.label_tag }}
+                    {{ form.address }}
+                </div>
+                <div class="mb-3">
+                    {{ form.dob.label_tag }}
+                    {{ form.dob }}
+                </div>
+            </div>
+        </div>
+        
+        {% for field in form %}
+            {% if field.errors %}
+                <div class="text-danger mt-2">
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+
+
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'profile' %}" class="text-decoration-none text-secondary link-secondary">Cancel</a>
+            <button type="submit" class="btn btn-outline-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

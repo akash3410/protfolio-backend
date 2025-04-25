@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
-from .forms import RegisterForm, LoginForm
+from .models import ClientInfo
+from .forms import RegisterForm, LoginForm, ClientInfoForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
-from django.contrib.auth.decorators import user_passes_test
+from django.contrib.auth.decorators import user_passes_test, login_required
 
 # Create your views here.
-def staff_required(user):
-    return user.is_staff
+def superuser_or_staff_required(user):
+    return user.is_superuser or user.is_staff
 
-@user_passes_test(staff_required)
+@user_passes_test(superuser_or_staff_required)
 def profile_view(request):
     return render(request, 'clientapp/profile.html')
 
@@ -40,6 +41,28 @@ def login_view(request):
         form = LoginForm()
     return render(request, "clientapp/loginForm.html", {'form': form})
 
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('home')
+
+@user_passes_test(superuser_or_staff_required)
+def client_info_view(request):
+    user = request.user
+
+    if not hasattr(user, 'clientinfo'):
+        ClientInfo.objects.create(user=user)
+
+    if request.method == "POST":
+        form = ClientInfoForm(request.POST, request.FILES, instance=user.clientinfo)
+        if form.is_valid():
+            form.save()
+            return redirect('profile')
+    else:
+        form = ClientInfoForm(instance=user.clientinfo)
+
+    context = {
+        'form': form
+    }
+
+    return render(request, 'clientapp/clientinfoform.html', context)

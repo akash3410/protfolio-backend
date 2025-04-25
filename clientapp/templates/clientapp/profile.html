@@ -1,20 +1,60 @@
-{% extends 'myapp/layout.html' %}
+{% extends 'myapp/index.html' %}
 
 {% block title %} Profile {% endblock%}
 
-{% block content %}
 {% include 'myapp/partials/nav.html' %}
 
+{% block content %}
+{% load static %}
+
 <div class="container">
-    <div class="">
-        <div class="d-flex align-items-center">
-            <h2 class="ms-5">{{ user.first_name }} {{ user.last_name }}</h2>
-            <br>
-            <p>
-                <a href="{% url 'logout' %}">Logout</a>
-            </p>
-        </div>
+    <div>
+        {% if user.clientinfo.cover_photo %}
+            <img src="{{ user.clientinfo.cover_photo.url }}" alt="Cover Photo" class="card-img-top img-fluid rounded" style="height: 200px;">
+        {% else %}
+            <img src="{% static 'img/cover.jpeg' %}" alt="Cover Photo will be appears here..." width="100%" height="300px">
+        {% endif %}
+
+        {% if user.clientinfo.profile_photo %}
+            <div class="d-flex align-items-center">
+                <img src="{{ user.clientinfo.profile_photo.url }}" alt="Profile Picture will be appears here..." class="rounded-circle mt-2" width="15%" height="10%">
+            </div>
+        {% else %}
+            <div class="d-flex align-items-center">
+                <img src="{% static 'img/profile.png' %}" alt="Profile Picture will be appears here..." class="rounded-circle mt-2" width="15%" height="10%">
+            </div>
+        {% endif %}
+
+        <h5 class="mt-2">{{ user.clientinfo.full_name }} </h5>
+        <p class="fs-6">{{user.clientinfo.bio}}</p>
         <span class="d-block"></span>
+        <hr>
+        <div class="row">
+            <div class="col-lg-3 border p-3">
+                <p class="fs-4 fw-bolder">Intro</p>
+                <hr>
+                <p class="fs-6">Staus: 
+                    {% if user.is_superuser %} 
+                        <strong class="fw-bold">You are Admin</strong> 
+                    {% elif user.is_staff %}
+                        <strong class="fw-bold">You are Client</strong>
+                    {% else %}
+                        <strong class="fw-bold">You are not Client</strong>
+                    {% endif %}
+                </p>
+                <p class="fs-6">Username: <strong class="fw-bold">{{user.username}}</strong></p>
+                <p class="fs-6">Company: <strong class="fw-bold">{{user.clientinfo.company}}</strong></p>
+                <p class="fs-6">Designation: <strong class="fw-bold">{{user.clientinfo.designation}}</strong></p>
+                <p class="fs-6">Address: <strong class="fw-bold">{{user.clientinfo.address}}</strong></p>
+                <p class="fs-6">Phone: <strong class="fw-bold">{{user.clientinfo.phone}}</strong></p>
+                <p class="fs-6">Date of Birth: <strong class="fw-bold">{{user.clientinfo.dob}}</strong></p>
+                <a href="{% url 'clientinfo' %}" class="btn btn-outline-secondary w-100 text-dark">Edit User Info</a>
+                <p></p>
+                <a href="{% url 'logout' %}" class="btn btn-outline-secondary w-100 text-dark"> Logout </a>
+                <p></p>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary w-100 text-dark"> Back to Home </a>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
