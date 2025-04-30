@@ -1,0 +1,62 @@
+{% extends 'myapp/layout.html' %}
+{% block title %} Review {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="form-custom-gradient p-4 border rounded w-50 w-sm-75 mx-auto p-auto" style="margin-top: 15%;">
+
+    <img src="{% static 'img/logowhite.png' %}" alt="logo" width="15%" height="15%" class="mb-3 mx-auto d-block">
+
+    <h3 class="mb-3 text-secondary">Review Us</h3>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" id="messsage">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    {% if form.non_field_errors %}
+    <div class="alert alert-danger" id="messsage">
+        {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+              <!-- Custom star rating using Starability -->
+            <fieldset class="starability-basic">
+                {% for value, label in form.rating.field.choices %}
+                <input type="radio" id="rate{{ value }}" name="rating" value="{{ value }}">
+                <label for="rate{{ value }}" title="{{ label }}"></label>
+                {% endfor %}
+            </fieldset>
+
+            <!-- Render other fields normally -->
+            <div class="form-group">
+                {{ form.comment.label_tag }}
+                {{ form.comment }}
+            </div>
+
+            {% if field.errors %}
+                <div class="text-danger mt-2">
+                    {% for error in field.errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="d-flex justify-content-between mt-4">
+            <div>
+                <a href="{% url 'profile' %}" class="text-decoration-none text-secondary link-secondary">Back to Profile</a>
+            </div>
+            <button type="submit" class="btn btn-outline-primary" style="height: 45px;">Done</button>
+        </div>
+        
+    </form>
+</div>
+{% endblock %}

@@ -78,6 +78,7 @@ TEMPLATES = [
                 'resumeapp.context_processors.globalCertification',
                 'serviceapp.context_processors.globalService',
                 'projectapp.context_processors.globalProject',
+                'projectapp.context_processors.globalReview',
             ],
         },
     },

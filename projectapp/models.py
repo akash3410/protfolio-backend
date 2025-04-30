@@ -25,3 +25,14 @@ class Project(models.Model):
     def __str__(self):
         return self.title
 
+class Review(models.Model):
+    RATING_CHOICES = [(i, str(i)) for i in range(1, 5)]
+
+    project = models.OneToOneField(Project, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='reviews', null=True, blank=True)
+    rating = models.IntegerField(choices=RATING_CHOICES)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.comment
