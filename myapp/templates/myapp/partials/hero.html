@@ -7,7 +7,11 @@
       <div class="row justify-content-center" data-aos="zoom-out">
         <div class="col-lg-9">
           <h3 class="fs-1 fw-bolder">{{personal_info.name}}</h3>
-          <p>I'm <span class="typed" data-typed-items="Designer, Developer, Freelancer, Photographer">Designer</span><span class="typed-cursor typed-cursor-blink" aria-hidden="true"></span></p>
+          {% if typed_roles %}
+            <p class="fs-4">I'm <span class="typed fw-bolder text-info-emphasis" data-typed-items="{{ typed_roles|join:',' }}"></span><span class="typed-cursor typed-cursor-blink" aria-hidden="true"></span></p>
+          {% else %}
+            <p class="fs-4">I'm <span class="typed fw-bolder text-info-emphasis" data-typed-items="Web Developer">Freelancer</span><span class="typed-cursor typed-cursor-blink" aria-hidden="true"></span></p>
+          {% endif %}
           <div class="social-links">
             {% for social in socials %}
               <a href="{{ social.link }}"><i class="{{ social.logo }} fs-3"></i></a>

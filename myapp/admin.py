@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import ContactMessage
+from .models import ContactMessage, Role
 
 # Register your models here.
 @admin.register(ContactMessage)
@@ -18,3 +18,5 @@ class ContactMessageAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'is_read', 'responed', 'created_at']
     list_filter = ['is_read', 'responed']
     search_fields = ['name', 'emai', 'message']
+
+admin.site.register(Role)

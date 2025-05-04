@@ -79,6 +79,7 @@ TEMPLATES = [
                 'serviceapp.context_processors.globalService',
                 'projectapp.context_processors.globalProject',
                 'projectapp.context_processors.globalReview',
+                'myapp.context_processors.global_role',
             ],
         },
     },
