@@ -18,6 +18,7 @@ class Feature(models.Model):
 class Service(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
+    more_info = models.TextField(null=True, blank=True)
     categories = models.ManyToManyField(Categorie, related_name='services')
     features = models.ManyToManyField(Feature, related_name='services')
     icon = models.CharField(max_length=50, null=True, blank=True)

@@ -19,7 +19,7 @@
                   </svg>
                   <i class="bi bi-hdd-stack"></i>
                 </div>
-                <a href="#" class="stretched-link">
+                <a href="{% url 'serviceDetails' service.id %}" class="stretched-link">
                   <h3>{{ service.title }}</h3>
                 </a>
                 <p>{{ service.description|slice:":170" }}</p>
