@@ -27,8 +27,8 @@
                 <div class="portfolio-info">
                   <h4>{{project.title}}</h4>
                   <p>{{ project.description|slice:":40" }}...</p>
-                  <a href="{{ project.image.url }}" title="{{ project.title }}" data-description="{{ project.description }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
-                  <a href="portfolio-details.html" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                  <a href="{{ project.image.url }}" title="Zoom" data-description="{{ project.description }}" data-gallery="portfolio-gallery-app" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
+                  <a href="{% url 'projectDetails' project.pk %}" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
                 </div>
               </div><!-- End Portfolio Item -->
             {% endfor %}

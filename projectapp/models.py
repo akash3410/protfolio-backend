@@ -13,6 +13,7 @@ class Project(models.Model):
     client = models.ForeignKey(User, on_delete=models.CASCADE, related_name='projects')
     title = models.CharField(max_length=100)
     description = models.TextField()
+    more_info = models.TextField(null=True, blank=True)
     category = models.ManyToManyField(Categorie, related_name='projects')
     link = models.URLField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

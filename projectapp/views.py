@@ -29,3 +29,8 @@ def submit_review(request, project_id):
         form = ReviewForm()
 
     return render(request, 'projectapp/submit_review.html', {'form': form})
+
+def project_details(request, project_id):
+    project = Project.objects.get(pk=project_id)
+    
+    return render(request, "myapp/project-details.html", {'project': project})
