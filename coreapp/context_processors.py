@@ -1,4 +1,4 @@
-from .models import PersonalInfo, About, Social, Skill
+from .models import PersonalInfo, About, Social, Skill, Description
 
 def global_personal_info(request):
     try:
@@ -27,3 +27,10 @@ def globalSkill(request):
     except Skill.DoesNotExist:
         skills = None
     return{'skills': skills}
+
+def global_description(request):
+    try:
+        description = Description.objects.first()
+    except Description.DoesNotExist:
+        description = None
+    return {'description': description}

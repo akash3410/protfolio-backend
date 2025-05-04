@@ -73,6 +73,7 @@ TEMPLATES = [
                 'coreapp.context_processors.global_about',
                 'coreapp.context_processors.globalSocial',
                 'coreapp.context_processors.globalSkill',
+                'coreapp.context_processors.global_description',
                 'resumeapp.context_processors.globalEducation',
                 'resumeapp.context_processors.globalProfessional',
                 'resumeapp.context_processors.globalCertification',

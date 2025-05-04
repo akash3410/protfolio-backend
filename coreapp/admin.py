@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PersonalInfo, About, Social, Skill
+from .models import PersonalInfo, About, Social, Skill, Description
 # Register your models here.
 admin.site.site_header = "My Administration"
 admin.site.site_title = "Admin"
@@ -24,3 +24,11 @@ class AboutAdmin(admin.ModelAdmin):
 admin.site.register(Social)
 
 admin.site.register(Skill)
+
+@admin.register(Description)
+class DescriptionAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return not Description.objects.exists()
+    
+    def has_delete_permission(self, requset, obj=None):
+        return False

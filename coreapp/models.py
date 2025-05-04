@@ -72,3 +72,20 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.title
+    
+class Description(models.Model):
+    skill = models.TextField(max_length=200, null=True, blank=True)
+    resume = models.TextField(max_length=200, null=True, blank=True)
+    projects = models.TextField(max_length=200, null=True, blank=True)
+    service = models.TextField(max_length=200, null=True, blank=True)
+    testmonial = models.TextField(max_length=200, null=True, blank=True)
+    contact = models.TextField(max_length=200, null=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.pk and Description.objects.exists():
+            raise Exception('There can only be one instance!')
+        else:
+            return super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return f"Descriptions"
