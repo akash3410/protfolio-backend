@@ -1,11 +1,20 @@
-from .models import Project, Review
+from .models import Project, Review, Categorie
 
 def globalProject(request):
     try:
-        projects = Project.objects.all()
+        category_id = request.GET.get('category')
+        projects = Project.objects.filter(status=True)
+        categories = Categorie.objects.filter(is_active=True)
+
+        if category_id:
+            projects = projects.filter(category__id=category_id)
     except Project.DoesNotExist:
         projects = None
-    return{'projects': projects}
+    return{
+        'projects': projects,
+        'categories': categories,
+        'selected_category': int(category_id) if category_id else None,
+    }
 
 def globalReview(request):
     try:

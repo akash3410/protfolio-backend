@@ -12,7 +12,8 @@ def blog_view(request):
 
     context = {
         'blogs': blogs,
-        'categories': categories
+        'categories': categories,
+        'selected_category': int(category_id) if category_id else None,
     }
 
     return render(request, "blogapp/blogs.html", context)
