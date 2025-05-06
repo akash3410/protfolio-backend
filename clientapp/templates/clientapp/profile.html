@@ -35,6 +35,9 @@
                 <a href="{% url 'home' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Home </a>
                 <a href="{% url 'blogs' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Blogs </a>
                 <a href="{% url 'home' %}#contact" class="btn btn-outline-secondary w-25 text-dark mb-2"> Send Message </a>
+                {% if user.is_superuser %}
+                    <a href="/admin/" class="btn btn-outline-secondary w-25 text-dark mb-2"> Admin Panel </a>
+                {% endif %}
                 <a href="{% url 'logout' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Logout </a>
             </div>
         </div>

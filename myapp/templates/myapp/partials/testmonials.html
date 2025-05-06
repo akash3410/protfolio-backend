@@ -25,39 +25,42 @@
           }
         </script>
         <div class="swiper-wrapper">
-
-          {% for review in reviews|slice:"::-1" %}
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row gy-4 justify-content-center">
-                  <div class="col-lg-6">
-                    <div class="testimonial-content">
-                      <p>
-                        <i class="bi bi-quote quote-icon-left"></i>
-                        <span>{{ review.comment }}</span>
-                        <i class="bi bi-quote quote-icon-right"></i>
-                      </p>
-                      <h3>{{ review.user.clientinfo.full_name }}</h3>
-                      <h4>{{ review.user.clientinfo.designation }}</h4>
-                      <div class="stars">
-                        <!-- show stars for the review -->
-                        {% for i in "01234" %}
-                          {% if i|add:0 <= review.rating %}
-                              <i class="bi bi-star-fill text-warning"></i>
-                          {% else %}
-                              <i class="bi bi-star text-warning"></i>
-                          {% endif %}
-                        {% endfor %}
+          {% if reviews %}
+            {% for review in reviews|slice:"::-1" %}
+              <div class="swiper-slide">
+                <div class="testimonial-item">
+                  <div class="row gy-4 justify-content-center">
+                    <div class="col-lg-6">
+                      <div class="testimonial-content">
+                        <p>
+                          <i class="bi bi-quote quote-icon-left"></i>
+                          <span>{{ review.comment }}</span>
+                          <i class="bi bi-quote quote-icon-right"></i>
+                        </p>
+                        <h3>{{ review.user.clientinfo.full_name }}</h3>
+                        <h4>{{ review.user.clientinfo.designation }}</h4>
+                        <div class="stars">
+                          <!-- show stars for the review -->
+                          {% for i in "01234" %}
+                            {% if i|add:0 <= review.rating %}
+                                <i class="bi bi-star-fill text-warning"></i>
+                            {% else %}
+                                <i class="bi bi-star text-warning"></i>
+                            {% endif %}
+                          {% endfor %}
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-lg-2 text-center">
-                    <img src="{{ review.user.clientinfo.profile_photo.url }}" class="img-fluid testimonial-img" alt="" width="60%" height="100px">
+                    <div class="col-lg-2 text-center">
+                      <img src="{{ review.user.clientinfo.profile_photo.url }}" class="img-fluid testimonial-img" alt="" width="60%" height="100px">
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div><!-- End testimonial item -->
-          {% endfor %}
+              </div><!-- End testimonial item -->
+            {% endfor %}
+          {% else %}
+              <p>No reviews to show!</p>
+          {% endif %}
 
         </div>
         <div class="swiper-pagination"></div>

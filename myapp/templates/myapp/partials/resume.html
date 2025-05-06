@@ -24,17 +24,21 @@
         </div><!-- Edn Resume Item -->
 
         <h3 class="resume-title">Education</h3>
-        {% for education in educations %}
-          <div class="resume-item">
-            <h4>{{ education.degree }}</h4>
-            <h5>
-              {{ education.start.year }} - 
-              {% if education.end %} {{ education.end.year }} {% else %} Present {% endif %}
-            </h5>
-            <p><em>{{ education.institute }}</em></p>
-            <p>{{ education.description }}</p>
-          </div><!-- Edn Resume Item -->
-        {% endfor %}
+        {% if educations %}
+          {% for education in educations %}
+            <div class="resume-item">
+              <h4>{{ education.degree }}</h4>
+              <h5>
+                {{ education.start.year }} - 
+                {% if education.end %} {{ education.end.year }} {% else %} Present {% endif %}
+              </h5>
+              <p><em>{{ education.institute }}</em></p>
+              <p>{{ education.description }}</p>
+            </div><!-- Edn Resume Item -->
+          {% endfor %}
+        {% else %}
+          <p>No educations to show!</p>
+        {% endif %}
       </div>
 
       <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
