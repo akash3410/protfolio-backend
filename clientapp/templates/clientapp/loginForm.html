@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block content %}
-<div class="form-custom-gradient p-4 border rounded w-50 w-sm-75 mx-auto p-auto" style="margin-top: 15%;">
+<div class="form-custom-gradient p-4 border rounded w-50 w-sm-75 mx-auto my-4 p-auto">
 
     <img src="{% static 'img/logowhite.png' %}" alt="logo" width="15%" height="15%" class="mb-3 mx-auto d-block">
 
@@ -45,7 +45,7 @@
 
         <div class="d-flex justify-content-between mt-4">
             <div>
-                <a href="" class="text-decoration-none text-danger d-block mb-3 link-danger">forget password?</a>
+                <a href="" class="text-decoration-none text-danger d-block mb-3 link-danger">forgot password?</a>
                 <a href="{% url 'register' %}" class="text-decoration-none text-success d-block mb-3 link-success">Don't have account?</a>
                 <a href="{% url 'home' %}" class="text-decoration-none text-secondary link-secondary">Back to home...</a>
             </div>
