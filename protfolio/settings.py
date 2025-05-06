@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     'clientapp',
     'projectapp',
     'authapp',
+    'blogapp',
+     'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [
