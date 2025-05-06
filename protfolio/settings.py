@@ -84,6 +84,7 @@ TEMPLATES = [
                 'projectapp.context_processors.globalProject',
                 'projectapp.context_processors.globalReview',
                 'myapp.context_processors.global_role',
+                'blogapp.context_processors.blogCount_context',
             ],
         },
     },
