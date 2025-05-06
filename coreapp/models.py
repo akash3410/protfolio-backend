@@ -13,6 +13,7 @@ class PersonalInfo(models.Model):
     cover_image = models.ImageField(upload_to='profile/')
     date_of_birth = models.DateField()
     degree = models.CharField(max_length=50)
+    logo = models.ImageField(upload_to='logos/', null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.pk and PersonalInfo.objects.exists():

@@ -26,6 +26,7 @@ urlpatterns = [
     path('project/', include('projectapp.urls')),
     path('service/', include('serviceapp.urls')),
     path('resume/', include('resumeapp.urls')),
+    path('auth/', include('authapp.urls')),
 ]
 
 if settings.DEBUG:
