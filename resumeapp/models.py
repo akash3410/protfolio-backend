@@ -29,5 +29,17 @@ class Certification(models.Model):
     result = models.DecimalField(null=True, blank=True, max_digits=6, decimal_places=2)
     is_active = models.BooleanField(default=False)
 
+
     def __str__(self):
         return f"{self.title} in {self.institute}"
+
+class Resume(models.Model):
+    cv = models.FileField(upload_to='cv')
+
+    def save(self, *args, **kwargs):
+        if not self.pk and Resume.objects.exists():
+            raise Exception("Only one instance of PDF is allowed!")
+        return super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return self.cv.name

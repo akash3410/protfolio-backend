@@ -25,6 +25,7 @@ urlpatterns = [
     path('client/', include('clientapp.urls')),
     path('project/', include('projectapp.urls')),
     path('service/', include('serviceapp.urls')),
+    path('resume/', include('resumeapp.urls')),
 ]
 
 if settings.DEBUG:

@@ -6,4 +6,3 @@ def service_details(request, service_id):
     service = Service.objects.get(pk=service_id)
 
     return render(request, "myapp/service-details.html", {'service': service})
-

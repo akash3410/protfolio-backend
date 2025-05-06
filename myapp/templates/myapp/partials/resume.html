@@ -1,83 +1,86 @@
 <section id="resume" class="resume section">
 
-    <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
-      <h2>Resume</h2>
-      <p>{{ description.resume }}</p>
-    </div><!-- End Section Title -->
+  <!-- Section Title -->
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Resume</h2>
+    <p>{{ description.resume }}</p>
+  </div><!-- End Section Title -->
 
-    <div class="container">
+  <div class="container">
 
-      <div class="row">
+    <div class="row">
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-          <h3 class="resume-title">Sumary</h3>
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-title">Sumary</h3>
 
-          <div class="resume-item pb-0">
-            <h4>{{ personal_info.name }}</h4>
-            <p><em>{{ about.profile_summary }}</em></p>
-            <ul>
-              <li>{{ personal_info.address }}</li>
-              <li>{{ personal_info.phone }}</li>
-              <li>{{ personal_info.email }}</li>
-            </ul>
+        <div class="resume-item pb-0">
+          <h4>{{ personal_info.name }}</h4>
+          <p><em>{{ about.profile_summary }}</em></p>
+          <ul>
+            <li>{{ personal_info.address }}</li>
+            <li>{{ personal_info.phone }}</li>
+            <li>{{ personal_info.email }}</li>
+          </ul>
+        </div><!-- Edn Resume Item -->
+
+        <h3 class="resume-title">Education</h3>
+        {% for education in educations %}
+          <div class="resume-item">
+            <h4>{{ education.degree }}</h4>
+            <h5>
+              {{ education.start.year }} - 
+              {% if education.end %} {{ education.end.year }} {% else %} Present {% endif %}
+            </h5>
+            <p><em>{{ education.institute }}</em></p>
+            <p>{{ education.description }}</p>
           </div><!-- Edn Resume Item -->
+        {% endfor %}
+      </div>
 
-          <h3 class="resume-title">Education</h3>
-          {% for education in educations %}
+      <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+        <h3 class="resume-title">Professional Experience</h3>
+        {% if profexps %}
+          {% for profexp in profexps %}
             <div class="resume-item">
-              <h4>{{ education.degree }}</h4>
+              <h4>{{ profexp.designation }}</h4>
               <h5>
-                {{ education.start.year }} - 
-                {% if education.end %} {{ education.end.year }} {% else %} Present {% endif %}
+                {{ profexp.start|date:"F Y" }} - 
+                {% if profexp.end %} {{ profexp.end|date:"F Y"  }} {% else %} Present {% endif %}
               </h5>
-              <p><em>{{ education.institute }}</em></p>
-              <p>{{ education.description }}</p>
+              <h6><em> {{ profexp.company }} </em></h6>
+              <p><em> {{ profexp.address }} </em></p>
+              <p><em> {{ profexp.description }} </em></p>
             </div><!-- Edn Resume Item -->
           {% endfor %}
-        </div>
+        {% else %}
+          <p>No professional experience to show!</p>
+        {% endif %}
 
-        <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-          <h3 class="resume-title">Professional Experience</h3>
-          {% if profexps %}
-            {% for profexp in profexps %}
-              <div class="resume-item">
-                <h4>{{ profexp.designation }}</h4>
-                <h5>
-                  {{ profexp.start|date:"F Y" }} - 
-                  {% if profexp.end %} {{ profexp.end|date:"F Y"  }} {% else %} Present {% endif %}
-                </h5>
-                <h6><em> {{ profexp.company }} </em></h6>
-                <p><em> {{ profexp.address }} </em></p>
-                <p><em> {{ profexp.description }} </em></p>
-              </div><!-- Edn Resume Item -->
-            {% endfor %}
-          {% else %}
-            <p>No professional experience to show!</p>
-          {% endif %}
+        <h3 class="resume-title">Certifications</h3>
+        {% if certifications %}
 
-          <h3 class="resume-title">Certifications</h3>
-          {% if certifications %}
+          {% for certification in certifications %}
+            <div class="resume-item">
+              <h4>{{ certification.title }}</h4>
+              <h6><em> From {{ certification.institute }} </em></h6>
+              {% if certification.result %}
+                <p><em> {{ certification.result }} </em></p>
+              {% endif %}
+              <p><em> {{ certification.description }} </em></p>
+            </div><!-- Edn Resume Item -->
+          {% endfor %}
 
-            {% for certification in certifications %}
-              <div class="resume-item">
-                <h4>{{ certification.title }}</h4>
-                <h6><em> From {{ certification.institute }} </em></h6>
-                {% if certification.result %}
-                  <p><em> {{ certification.result }} </em></p>
-                {% endif %}
-                <p><em> {{ certification.description }} </em></p>
-              </div><!-- Edn Resume Item -->
-            {% endfor %}
-
-          {% else %}
-            <p>No Certification to show!</p>
-          {% endif %}
-
-        </div>
+        {% else %}
+          <p>No Certification to show!</p>
+        {% endif %}
 
       </div>
 
     </div>
+
+  </div>
+
+  <!-- templates/download_link.html -->
+  <a href="{% url 'downloadCv' %}" data-aos="fade-up" target="_blank" class="btn btn-primary float-end me-4">Download Full PDF</a>
 
 </section>
