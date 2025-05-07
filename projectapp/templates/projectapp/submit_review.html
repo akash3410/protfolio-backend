@@ -1,12 +1,14 @@
 {% extends 'myapp/layout.html' %}
-{% block title %} Review {% endblock %}
 
-{% load static %}
+{% block title %} Review | Arifuzzaman Akash - Django Developer {% endblock %}
+
+{% block meta_description %}Welcome to Akash's personal developer portfolio. Explore Django projects and frontend work.{% endblock %}
+{% block meta_keywords %}portfolio, Akash, Python, Django, projects{% endblock %}
 
 {% block content %}
 <div class="form-custom-gradient p-4 border rounded w-50 w-sm-75 mx-auto p-auto" style="margin-top: 15%;">
 
-    <img src="{% static 'img/logowhite.png' %}" alt="logo" width="15%" height="15%" class="mb-3 mx-auto d-block">
+    <img src="{{ personal_info.logo.url }}" alt="logo" width="15%" height="15%" class="mb-3 mx-auto d-block">
 
     <h3 class="mb-3 text-secondary">Review Us</h3>
 

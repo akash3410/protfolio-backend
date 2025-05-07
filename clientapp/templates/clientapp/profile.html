@@ -1,11 +1,15 @@
 {% extends 'myapp/index.html' %}
 
-{% block title %} Profile {% endblock%}
+{% block title %} Profile | Arifuzzaman Akash - Django Developer {% endblock %}
+
+{% block meta_description %}Welcome to Akash's personal developer portfolio. Explore Django projects and frontend work.{% endblock %}
+{% block meta_keywords %}portfolio, Akash, Python, Django, projects{% endblock %}
+
+{% load static %}
 
 {% include 'myapp/partials/nav.html' %}
 
 {% block content %}
-{% load static %}
 
 <div class="container">
     <div>
@@ -23,7 +27,7 @@
                     </div>
                 {% else %}
                     <div class="d-flex align-items-center">
-                        <img src="{% static 'img/profile.png' %}" alt="Profile Picture will be appears here..." class="rounded-circle mt-2">
+                        <img src="{% static 'img/profile.png' %}" alt="Profile picture" class="rounded-circle mt-2">
                     </div>
                 {% endif %}
 

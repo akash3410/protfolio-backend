@@ -1,6 +1,9 @@
 {% extends 'myapp/layout.html' %}
 
-{% block title %} Blogs {% endblock %}
+{% block title %} Blogs | Arifuzzaman Akash - Django Developer {% endblock %}
+
+{% block meta_description %}Welcome to Akash's personal developer portfolio. Explore Django projects and frontend work.{% endblock %}
+{% block meta_keywords %}portfolio, Akash, Python, Django, projects{% endblock %}
 
 {% load humanize %}
 
@@ -58,7 +61,7 @@
                             {% endfor %}
                             <p class="mt-3">{{blog.content}}</p>
                             {% if blog.image %}
-                                <img src="{{ blog.image.url }}" alt="" class="img-fluid services-img">
+                                <img src="{{ blog.image.url }}" alt="{{blog.title}}" class="img-fluid services-img">
                             {% endif %}
                             <div class="d-flex justify-content-between">
                                 <p>

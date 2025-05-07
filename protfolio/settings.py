@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'projectapp',
     'authapp',
     'blogapp',
-     'django.contrib.humanize',
+    'django.contrib.humanize',
+    'django.contrib.sitemaps',
 ]
 
 MIDDLEWARE = [

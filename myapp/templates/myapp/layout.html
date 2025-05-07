@@ -6,10 +6,23 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title> {% block title %} Arifuzzaman Akash {% endblock %} </title>
+  <title> {% block title %} Arifuzzaman Akash's protfolio {% endblock %} </title>
 
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta name="description" content="{% block meta_description %}Portfolio of Akash, a full-stack developer skilled in Django and frontend tech.{% endblock %}">
+  <meta name="keywords" content="{% block meta_keywords %}Django, React, portfolio, web developer, Python, frontend, backend{% endblock %}">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Akash | Django Developer Portfolio">
+  <meta property="og:description" content="Explore Akash's web development projects using Django and React.">
+  <meta property="og:image" content="https://akashsprotfolio.pythonanywhere.com/static/img/image.png">
+  <meta property="og:url" content="https://akashsprotfolio.pythonanywhere.com">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akash | Django Developer Portfolio">
+  <meta name="twitter:description" content="Explore Akash's web projects and skills">
+  <meta name="twitter:image" content="https://akashsprotfolio.pythonanywhere.com/static/img/image.png">
 
   <!-- Favicons -->
   <link href="{{ personal_info.logo.url }}" rel="icon">
@@ -74,7 +87,7 @@
       <p>{{personal_info.bio }}</p>
       <div class="social-links d-flex justify-content-center">
         {% for social in socials %}
-          <a href="{{ social.link }}"><i class="{{ social.logo }} fs-3"></i></a>
+          <a href="{{ social.link }}" target="_blank"><i class="{{ social.logo }} fs-3"></i></a>
         {% endfor %}
       </div>
 
@@ -83,7 +96,12 @@
           <span> &#169; Copyright</span> <strong class="px-1 sitename">{{ personal_info.name }}</strong> <span>All Rights Reserved</span>
         </div>
         <div class="credits">
+          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuited by <a href="https://themewagon.com">ThemeWagon</a>
+          <br>
           Development by <a href="{% url 'home' %}">{{ personal_info.name }}</a>
+        </div>
+        <div class="credits">
+          
         </div>
       </div>
     </div>

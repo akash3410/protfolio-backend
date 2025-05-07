@@ -1,6 +1,9 @@
 {% extends 'myapp/layout.html' %}
 
-{% block title %} Service Details {% endblock %}
+{% block title %} Service Details | Arifuzzaman Akash - Django Developer {% endblock %}
+
+{% block meta_description %}Welcome to Akash's personal developer portfolio. Explore Django projects and frontend work.{% endblock %}
+{% block meta_keywords %}portfolio, Akash, Python, Django, projects{% endblock %}
 
 {% block content %}
 
@@ -48,7 +51,7 @@
 
         <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
           {% if service.image %}
-            <img src="{{ service.image.url }}" alt="" class="img-fluid services-img" width="100%">
+            <img src="{{ service.image.url }}" alt="{{service.title}}" class="img-fluid services-img" width="100%">
           {% else %}
             <img src="" alt="">
           {% endif %}

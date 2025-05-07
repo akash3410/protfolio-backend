@@ -18,6 +18,12 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from myapp.sitemaps import StaticViewSitemap
+
+sitemaps = {
+    'static': StaticViewSitemap,
+}
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +34,7 @@ urlpatterns = [
     path('resume/', include('resumeapp.urls')),
     path('auth/', include('authapp.urls')),
     path('blog/', include('blogapp.urls')),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='sitemap'),
 ]
 
 if settings.DEBUG:
