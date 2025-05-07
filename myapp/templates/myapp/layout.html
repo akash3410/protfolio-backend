@@ -37,23 +37,6 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/starability/starability-minified/starability-all.min.css">
 
   <style>
-    .form-custom-gradient {
-      background: linear-gradient(to left, #11004ddc, #11004eee);
-      box-shadow: 5px 5px 10px #11004d8e;
-      color: white;
-    }
-
-    input.input-no-rate {
-      display: none !important;
-    }
-
-    .auth-form label{
-      display: block;
-      margin-bottom: 10px;
-    }
-    .auth-form input{
-      width: 50%;
-    }
     .cover-container {
       width: 100%;
       height: 400px;
@@ -63,6 +46,7 @@
       background-repeat: no-repeat;
       border-radius: 10px;
     }
+
     .profile-container {
       width: 50%;
       height: 140px;
@@ -71,8 +55,13 @@
       background-position: 50% 35%;
       background-repeat: no-repeat;
       border-radius: 100%;
+      margin-top: -8px;
     }
   </style>
+
+  <!-- Style CSS -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
 </head>
 
 <body class="index-page">
@@ -115,20 +104,6 @@
   <script src="{% static 'vendor/imagesloaded/imagesloaded.pkgd.min.js' %}"></script>
   <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
   <script src="{% static 'vendor/swiper/swiper-bundle.min.js' %}"></script>
-
-  <!-- Typed CDN -->
-  <!-- <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script>
-    var options = {
-      strings: ["Designer", "Developer", "Freelancer", "Photographer"], // List of words to type
-      typeSpeed: 100, // Speed of typing in milliseconds
-      backSpeed: 100,  // Speed of backspacing
-      backDelay: 3000, // Delay before starting to backspace
-      loop: true,     // Loops the typing effect
-    };
-  
-    var typed = new Typed(".typed", options);
-  </script> -->
 
   <!-- AOS -->
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>

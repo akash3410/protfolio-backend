@@ -16,14 +16,14 @@
         {% endif %}
 
         <div class="row">
-            <div class="col-3">
+            <div class="col-lg-3">
                 {% if user.clientinfo.profile_photo %}
                     <div class="d-flex align-items-center">
                         <div class="profile-container"></div>
                     </div>
                 {% else %}
                     <div class="d-flex align-items-center">
-                        <img src="{% static 'img/profile.png' %}" alt="Profile Picture will be appears here..." class="rounded-circle mt-2" width="100%" height="25%">
+                        <img src="{% static 'img/profile.png' %}" alt="Profile Picture will be appears here..." class="rounded-circle mt-2">
                     </div>
                 {% endif %}
 
@@ -31,12 +31,12 @@
                 <p class="fs-6">{{user.clientinfo.bio}}</p>
                 <span class="d-block"></span>
             </div>
-            <div class="col-9 mt-4 d-flex flex-column align-items-end">
+            <div class="col-lg-9 mt-lg-4 d-flex flex-column align-items-end responsive-menu">
                 <a href="{% url 'home' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Home </a>
                 <a href="{% url 'blogs' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Blogs </a>
                 <a href="{% url 'home' %}#contact" class="btn btn-outline-secondary w-25 text-dark mb-2"> Send Message </a>
                 {% if user.is_superuser %}
-                    <a href="/admin/" class="btn btn-outline-secondary w-25 text-dark mb-2"> Admin Panel </a>
+                    <a href="/admin/" target="_blank" class="btn btn-outline-secondary w-25 text-dark mb-2"> Admin Panel </a>
                 {% endif %}
                 <a href="{% url 'logout' %}" class="btn btn-outline-secondary w-25 text-dark mb-2"> Logout </a>
             </div>
@@ -72,7 +72,7 @@
                 <div class="row">
                     {% for project in projects %}
                         {% if project.client == user %}
-                            <div class="col-lg-6 my-3">
+                            <div class="col-lg-6 my-3 mx-lg-0 col-md-5 mx-md-3 responsive-project-card">
                                 <div class="card" style="width: 20rem;">
                                     <img src="{{ project.image.url }}" class="card-img-top" alt="{{ project.title }}">
                                     <div class="card-body">
