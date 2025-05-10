@@ -29,5 +29,4 @@ media/
 # Environment Variables
 .env
 
-/myapp/static/
-/myapp/static/*
+/static/
