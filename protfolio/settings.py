@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY") or config("SECRET_KEY", default="fallb
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config("DEBUG", default=False, cast=bool)
 
-ALLOWED_HOSTS = ['protfolio.up.railway.app/', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['protfolio.up.railway.app']
 
 # Application definition
 
